@@ -10,6 +10,10 @@
 
 require 'csv'
 
+Artist.delete_all
+Album.delete_all
+RecordLabel.delete_all
+
 CSV.foreach("db/seeds.csv") do |row|
   album = {
       musician:  row[0],
@@ -20,5 +24,27 @@ CSV.foreach("db/seeds.csv") do |row|
       core:      (row[5] == "No"? false : true),
       best_1001: (row[6] == "No"? false : true)
   }
-  puts album
+
+  Artist.create!(
+    musician: album[:musician]
+    )
+  RecordLabel.create!(
+    label: album[:label]
+    )
+
+  artist_id = Artist.find_by(musician: album[:musician]).id
+  record_label_id = RecordLabel.find_by(label: album[:label]).id
+
+  Album.create!(
+    album: album[:album],
+    edition: album[:edition],
+    crown: album[:crown],
+    core: album[:core],
+    best_1001: album[:best_1001],
+    artist_id: artist_id,
+    record_label_id: record_label_id
+    )
+
 end
+
+

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150819135217) do
+ActiveRecord::Schema.define(version: 20150819142631) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,8 +22,10 @@ ActiveRecord::Schema.define(version: 20150819135217) do
     t.boolean  "crown"
     t.boolean  "core"
     t.boolean  "best_1001"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "artist_id"
+    t.integer  "record_label_id"
   end
 
   create_table "artists", force: :cascade do |t|
