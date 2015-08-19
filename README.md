@@ -40,9 +40,10 @@ After you create the basic models, you should model the relationships between th
 
 - Every `Artist` should have a unique entry in the `Artists` model (No duplicates!)
 - Every `Artist` may have one, or many, `Albums`
-- Every `Artist` may belong to one or many `RecordLabel`s
 - Every `Album` may belong to only one `Artist`
-
+- Every `Album` may belong to only one `RecordLabel`
+- Every `Artist` may belong to one or many `RecordLabel`s, through their albums
+ 
 Make sure we can navigate all the relationships with ease. All these relationships should work when you are done :)
 
 ```ruby
